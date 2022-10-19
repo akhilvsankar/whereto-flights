@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,6 +77,6 @@ public class AirshoppingService {
 
     private long getTimeDuration(ZonedDateTime arrivalDate, ZonedDateTime depDate)
     {
-       return arrivalDate.getHour()-depDate.getHour();
+        return ChronoUnit.HOURS.between(depDate,arrivalDate);
     }
 }
